@@ -1,0 +1,14 @@
+/*
+ * Project overview of "Mathe für Nicht-Freaks"
+ *
+ * See http://taskjuggler.org/tj3/manual/index.html for a manual
+ */
+project mfnf "Mathe für Nicht-Freaks" 2018-05-01 +6m {
+  currency "€"
+  currencyformat "-" "" "." "," 2
+
+  numberformat "-" "" "." "," 1
+
+  timezone "Europe/Berlin"
+  timeformat "%Y-%m"
+}
