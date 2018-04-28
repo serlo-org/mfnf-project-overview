@@ -3,7 +3,7 @@
  *
  * See http://taskjuggler.org/tj3/manual/index.html for a manual
  */
-project mfnf "Mathe für Nicht-Freaks" 2018-05-01 +6m {
+project mfnf "Mathe für Nicht-Freaks" 2018-04-30 +6m {
   currency "€"
   currencyformat "-" "" "." "," 2
 
@@ -13,7 +13,7 @@ project mfnf "Mathe für Nicht-Freaks" 2018-05-01 +6m {
   timeformat "%Y-%m"
 }
 
-resource kulla "Kulla" {
+resource Kulla "Kulla" {
   limits { weeklymax 20h }
 }
 
@@ -33,10 +33,44 @@ resource JS "JS" {
   limits { weeklymax 6h }
 }
 
-task "LMU-Auflage Analysisbuch" {
-  effort 20h
+resource elbotho "elbotho" {
+  limits { weeklymax 5h }
+}
+
+resource KatharinaKirchner "Katharina Kirchner" {
   limits { weeklymax 4h }
-  allocate kulla
+}
+
+task "LMU-Auflage Analysisbuch" {
+  task give_order "Druckauftrag erteilen" {
+    start 2018-05-01
+    effort 2h
+    allocate KatharinaKirchner
+    allocate elbotho
+  }
+
+  task print "Druck des Buchs" {
+    depends !give_order
+    duration 2w
+  }
+
+  task "30 Exemplare der Bibliothek geben" {
+    effort 4h
+    allocate KatharinaKirchner
+    depends !print
+  }
+
+  task get_contacts "Kontake der Autor*innen einholen" {
+    effort 4h
+    allocate Kulla
+  }
+
+  task "Bücher den Autor*innen schicken" {
+    effort 1d
+    allocate KatharinaKirchner
+    allocate Kulla
+    depends !get_contacts, !print
+  }
 }
 
 navigator navbar {
