@@ -16,14 +16,12 @@ project mfnf "Mathe für Nicht-Freaks" 2018-04-30 +6m {
 include "resources.tji"
 include "projects/lmu-print.tji"
 
-navigator navbar {
-
-}
+navigator menu
 
 textreport frame "" {
   header -8<-
     == Project plan for „Serlo Hochschulmathematik“ ==
-    <[navigator id="navbar"]>
+    <[navigator id="menu"]>
   ->8-
 
   textreport overview "index" {
