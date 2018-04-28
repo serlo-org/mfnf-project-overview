@@ -47,7 +47,7 @@ textreport frame "" {
     textreport lmu_print "LMU-Auflage" {
       timeformat "%a %Y-%m-%d"
 
-      taskreport overview "lmu-print-overview.html" {
+      taskreport overview "lmu_print_overview" {
         title "Overview"
         columns bsi, name, start, end, effort,
                 duration, chart { scale day width 500 }
