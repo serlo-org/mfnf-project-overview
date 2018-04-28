@@ -16,6 +16,11 @@ project mfnf "Mathe für Nicht-Freaks" 2018-04-30 +6m {
 include "resources.tji"
 include "projects/lmu-print.tji"
 
+macro loadunit_hours [
+  loadunit hours
+  caption "All effort values are in hours."
+]
+
 navigator menu
 
 textreport frame "" {
@@ -29,16 +34,16 @@ textreport frame "" {
   taskreport overview "index" {
     title "Overview"
     headline "Overview"
-    loadunit hours
     hideresource 1
     hidetask treelevel() > 1
-    caption 'All effort values are in hours.'
+    ${loadunit_hours}
   }
 
   resourcereport resource_graph "resource_graph" {
     title "Resource Graph"
     headline "Resource Graph"
     columns no, name, effort, rate, weekly
+    ${loadunit_hours}
     loadunit hours
     caption "All effort values are in hours."
     hidetask 0
@@ -52,8 +57,7 @@ textreport frame "" {
         title "Overview"
         columns bsi, name, start, end, effort,
                 duration, chart { scale day width 500 }
-        loadunit hours
-        caption "All effort values are in hours."
+        ${loadunit_hours}
         hideresource 1
         taskroot lmu_print
       }
@@ -62,8 +66,7 @@ textreport frame "" {
         title "Tasks and Resources"
         columns bsi, name, start, end, effort,
                 duration, chart { scale day width 500 }
-        loadunit hours
-        caption "All effort values are in hours."
+        ${loadunit_hours}
         hideresource 0
         taskroot lmu_print
       }
@@ -71,8 +74,7 @@ textreport frame "" {
       resourcereport "lmu_print_resource_graph.html" {
         title "Resource Graph"
         columns no, name, effort, rate, daily
-        loadunit hours
-        caption "All effort values are in hours."
+        ${loadunit_hours}
         hidetask 0
         taskroot lmu_print
       }
