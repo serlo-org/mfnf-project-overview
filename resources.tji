@@ -1,0 +1,27 @@
+resource Kulla "Kulla" {
+  limits { weeklymax 20h }
+}
+
+resource KeinMatheFreak "KeinMatheFreak" {
+  limits { weeklymax 5h }
+}
+
+resource ZornschesLemma "Zornsches Lemma" {
+  limits { weeklymax 3h }
+}
+
+resource MK "MK" {
+  limits { weeklymax 10h }
+}
+
+resource JS "JS" {
+  limits { weeklymax 6h }
+}
+
+resource elbotho "elbotho" {
+  limits { weeklymax 5h }
+}
+
+resource KatharinaKirchner "Katharina Kirchner" {
+  limits { weeklymax 4h }
+}
