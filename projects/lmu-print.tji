@@ -1,4 +1,4 @@
-task "LMU-Auflage Analysisbuch" {
+task lmu_print "LMU-Auflage Analysisbuch" {
   task give_order "Druckauftrag erteilen" {
     start 2018-05-01
     effort 2h
