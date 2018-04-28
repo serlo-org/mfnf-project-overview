@@ -1,0 +1,31 @@
+task "LMU-Auflage Analysisbuch" {
+  task give_order "Druckauftrag erteilen" {
+    start 2018-05-01
+    effort 2h
+    allocate KatharinaKirchner
+    allocate elbotho
+  }
+
+  task print "Druck des Buchs" {
+    depends !give_order
+    duration 2w
+  }
+
+  task "30 Exemplare der Bibliothek geben" {
+    effort 4h
+    allocate KatharinaKirchner
+    depends !print
+  }
+
+  task get_contacts "Kontake der Autor*innen einholen" {
+    effort 4h
+    allocate Kulla
+  }
+
+  task "Bücher den Autor*innen schicken" {
+    effort 1d
+    allocate KatharinaKirchner
+    allocate Kulla
+    depends !get_contacts, !print
+  }
+}
