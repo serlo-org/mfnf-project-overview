@@ -24,30 +24,24 @@ textreport frame "" {
     <[navigator id="menu"]>
   ->8-
 
-  textreport overview "index" {
+  formats html
+
+  taskreport overview "index" {
     title "Overview"
-    formats html
-    center '<[report id="overview"]>'
+    headline "Overview"
+    loadunit hours
+    hideresource 0
+    caption 'All effort values are in hours.'
   }
 
-  textreport resource_graph "resource_graph" {
+  resourcereport resource_graph "resource_graph" {
     title "Resource Graph"
-    formats html
-    center '<[report id="resource_graph"]>'
+    headline "Resource Graph"
+    columns no, name, effort, rate, weekly
+    loadunit hours
+    caption "All effort values are in hours."
+    hidetask 0
   }
-}
 
-taskreport overview "" {
-  headline "Overview"
-  loadunit hours
-  hideresource 0
-  caption 'All effort values are in hours.'
-}
-
-resourcereport resource_graph "" {
-  headline "Resource planning graph"
-  columns no, name, effort, rate, weekly
-  loadunit hours
-  caption "All effort values are in hours."
-  hidetask 0
+  purge formats
 }
