@@ -12,3 +12,28 @@ project mfnf "Mathe für Nicht-Freaks" 2018-05-01 +6m {
   timezone "Europe/Berlin"
   timeformat "%Y-%m"
 }
+
+resource kulla "Kulla" {
+  limits { weeklymax 20h }
+}
+
+task "LMU-Auflage Analysisbuch" {
+  effort 20h
+  limits { weeklymax 4h }
+  allocate kulla
+}
+
+textreport frame "" {
+  textreport overview "Overview" {
+    title "Overview"
+    formats html
+    center '<[report id="overview"]>'
+  }
+}
+
+taskreport overview "" {
+  timeformat "%Y-%m-%d"
+  loadunit weeks
+  hideresource 0
+  caption 'All effort values are in weeks.'
+}
