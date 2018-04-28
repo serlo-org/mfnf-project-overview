@@ -23,16 +23,24 @@ task "LMU-Auflage Analysisbuch" {
   allocate kulla
 }
 
+navigator navbar {
+
+}
+
 textreport frame "" {
-  textreport overview "Overview" {
-    title "Overview"
+  header -8<-
+    == Projektübersicht „Serlo Hochschulmathematik“ ==
+    <[navigator id="navbar"]>
+  ->8-
+
+  textreport overview "index" {
+    title "Gesamtübersicht"
     formats html
     center '<[report id="overview"]>'
   }
 }
 
 taskreport overview "" {
-  timeformat "%Y-%m-%d"
   loadunit weeks
   hideresource 0
   caption 'All effort values are in weeks.'
