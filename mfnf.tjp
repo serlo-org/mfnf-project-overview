@@ -45,14 +45,25 @@ textreport frame "" {
 
   textreport projects "Projects" {
     textreport lmu_print "LMU-Auflage" {
+      timeformat "%a %Y-%m-%d"
+
       taskreport overview "lmu-print-overview.html" {
         title "Overview"
-        timeformat "%a %Y-%m-%d"
         columns bsi, name, start, end, effort,
-                  duration, chart { scale day width 500 }
+                duration, chart { scale day width 500 }
         loadunit hours
         caption "All effort values are in hours."
         hideresource 1
+        taskroot lmu_print
+      }
+
+      taskreport "lmu_print_complete" {
+        title "Tasks and Resources"
+        columns bsi, name, start, end, effort,
+                duration, chart { scale day width 500 }
+        loadunit hours
+        caption "All effort values are in hours."
+        hideresource 0
         taskroot lmu_print
       }
 
