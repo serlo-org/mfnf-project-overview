@@ -68,6 +68,15 @@ textreport frame "" {
         taskroot lmu_print
       }
 
+      resourcereport "lmu_print_resource_graph.html" {
+        title "Resource Graph"
+        columns no, name, effort, rate, daily
+        loadunit hours
+        caption "All effort values are in hours."
+        hidetask 0
+        taskroot lmu_print
+      }
+
       purge formats
     }
 
