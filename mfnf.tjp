@@ -30,7 +30,8 @@ textreport frame "" {
     title "Overview"
     headline "Overview"
     loadunit hours
-    hideresource 0
+    hideresource 1
+    hidetask treelevel() > 1
     caption 'All effort values are in hours.'
   }
 
