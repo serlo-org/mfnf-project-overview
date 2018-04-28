@@ -29,19 +29,34 @@ navigator navbar {
 
 textreport frame "" {
   header -8<-
-    == Projektübersicht „Serlo Hochschulmathematik“ ==
+    == Project plan for „Serlo Hochschulmathematik“ ==
     <[navigator id="navbar"]>
   ->8-
 
   textreport overview "index" {
-    title "Gesamtübersicht"
+    title "Overview"
     formats html
     center '<[report id="overview"]>'
+  }
+
+  textreport resource_graph "resource_graph" {
+    title "Resource Graph"
+    formats html
+    center '<[report id="resource_graph"]>'
   }
 }
 
 taskreport overview "" {
-  loadunit weeks
+  headline "Overview"
+  loadunit hours
   hideresource 0
-  caption 'All effort values are in weeks.'
+  caption 'All effort values are in hours.'
+}
+
+resourcereport resource_graph "" {
+  headline "Resource planning graph"
+  columns no, name, effort, rate, weekly
+  loadunit hours
+  caption "All effort values are in hours."
+  hidetask 0
 }
