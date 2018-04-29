@@ -1,0 +1,87 @@
+macro loadunit_hours [
+  loadunit hours
+  caption "All effort values are in hours."
+]
+
+macro report_overview_body [
+  title "Overview"
+  headline "Overview"
+  hideresource 1
+  columns bsi, name, start, end, effort,
+          duration, chart { scale day width 500 }
+  ${loadunit_hours}
+]
+
+macro report_complete_body [
+  title "All tasks and resources"
+  headline "All tasks and resources"
+  columns bsi, name, start, end, effort,
+          duration, chart { scale day width 500 }
+  ${loadunit_hours}
+  hideresource 0
+]
+
+macro report_resourcegraph_body [
+  title "Resource Graph"
+  headline "Resource Graph"
+  columns no, name, effort, rate, daily
+  ${loadunit_hours}
+  hidetask 0
+  hideresource plan.effort = 0
+]
+
+macro report_project [
+  textreport ${1} "${2}" {
+    timeformat "%a %Y-%m-%d"
+
+    taskreport overview "${1}_overview" {
+      ${report_overview_body}
+      taskroot ${1}
+    }
+
+    taskreport "${1}_complete" {
+      ${report_complete_body}
+      taskroot ${1}
+    }
+
+    resourcereport "${1}_resource_graph" {
+      ${report_resourcegraph_body}
+      taskroot ${1}
+    }
+
+    purge formats
+  }
+]
+
+navigator menu
+
+textreport frame "" {
+  header -8<-
+    == Project plan for „Serlo Hochschulmathematik“ ==
+    <[navigator id="menu"]>
+  ->8-
+
+  formats html
+
+  taskreport overview "index" {
+    ${report_overview_body}
+    hidetask treelevel() > 1
+  }
+
+  taskreport complete "complete" {
+    ${report_complete_body}
+  }
+
+  resourcereport resource_graph "resource_graph" {
+    ${report_resourcegraph_body}
+    hideresource 0
+  }
+
+  textreport projects "Projects" {
+    ${report_project "lmu_print" "LMU-Auflage"}
+
+    purge formats
+  }
+
+  purge formats
+}
