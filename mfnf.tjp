@@ -21,6 +21,45 @@ macro loadunit_hours [
   caption "All effort values are in hours."
 ]
 
+macro report_overview_body [
+  title "Overview"
+  headline "Overview"
+  hideresource 1
+  columns bsi, name, start, end, effort,
+          duration, chart { scale day width 500 }
+  ${loadunit_hours}
+]
+
+macro report_project [
+  textreport ${1} "${2}" {
+    timeformat "%a %Y-%m-%d"
+
+    taskreport overview "${1}-overview" {
+      ${report_overview_body}
+      taskroot ${1}
+    }
+
+    taskreport "lmu_print_complete" {
+      title "Tasks and Resources"
+      columns bsi, name, start, end, effort,
+              duration, chart { scale day width 500 }
+      ${loadunit_hours}
+      hideresource 0
+      taskroot lmu_print
+    }
+
+    resourcereport "lmu_print_resource_graph.html" {
+      title "Resource Graph"
+      columns no, name, effort, rate, daily
+      ${loadunit_hours}
+      hidetask 0
+      taskroot lmu_print
+    }
+
+    purge formats
+  }
+]
+
 navigator menu
 
 textreport frame "" {
@@ -32,11 +71,8 @@ textreport frame "" {
   formats html
 
   taskreport overview "index" {
-    title "Overview"
-    headline "Overview"
-    hideresource 1
+    ${report_overview_body}
     hidetask treelevel() > 1
-    ${loadunit_hours}
   }
 
   resourcereport resource_graph "resource_graph" {
@@ -50,37 +86,7 @@ textreport frame "" {
   }
 
   textreport projects "Projects" {
-    textreport lmu_print "LMU-Auflage" {
-      timeformat "%a %Y-%m-%d"
-
-      taskreport overview "lmu_print_overview" {
-        title "Overview"
-        columns bsi, name, start, end, effort,
-                duration, chart { scale day width 500 }
-        ${loadunit_hours}
-        hideresource 1
-        taskroot lmu_print
-      }
-
-      taskreport "lmu_print_complete" {
-        title "Tasks and Resources"
-        columns bsi, name, start, end, effort,
-                duration, chart { scale day width 500 }
-        ${loadunit_hours}
-        hideresource 0
-        taskroot lmu_print
-      }
-
-      resourcereport "lmu_print_resource_graph.html" {
-        title "Resource Graph"
-        columns no, name, effort, rate, daily
-        ${loadunit_hours}
-        hidetask 0
-        taskroot lmu_print
-      }
-
-      purge formats
-    }
+    ${report_project "lmu_print" "LMU-Auflage"}
 
     purge formats
   }
