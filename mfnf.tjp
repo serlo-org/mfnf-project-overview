@@ -51,7 +51,7 @@ macro report_project [
   textreport ${1} "${2}" {
     timeformat "%a %Y-%m-%d"
 
-    taskreport overview "${1}-overview" {
+    taskreport overview "${1}_overview" {
       ${report_overview_body}
       taskroot ${1}
     }
