@@ -25,3 +25,15 @@ resource elbotho "elbotho" {
 resource KatharinaKirchner "Katharina Kirchner" {
   limits { weeklymax 4h }
 }
+
+resource Y "Y" {
+  limits { weeklymax 11h }
+}
+
+resource VT "VT" {
+  limits { weeklymax 4h }
+}
+
+resource MB "MB" {
+  limits { weeklymax 4h }
+}

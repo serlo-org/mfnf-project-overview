@@ -1,0 +1,139 @@
+macro allocate_weekly [
+  allocate ${1}
+
+  limits {
+    weeklymax ${2} { resources ${1} }
+    weeklymin ${2} { resources ${1} }
+  }
+]
+
+macro undefined_effort [
+  start 2018-05-01
+  end   2018-10-28
+]
+
+task "Programmierung" {
+  ${undefined_effort}
+
+  ${allocate_weekly "Kulla" "5h"}
+}
+
+task "MFNF2Serlo" {
+  ${undefined_effort}
+
+  ${allocate_weekly "Kulla" "2h"}
+}
+
+task "Piazza" {
+  ${undefined_effort}
+
+  ${allocate_weekly "MK" "2h"}
+  ${allocate_weekly "Kulla" "1h"}
+}
+
+task "Projekt: Chemie" {
+  ${undefined_effort}
+
+  ${allocate_weekly "Y" "11h"}
+  ${allocate_weekly "Kulla" "2h"}
+}
+
+task "Rechenmethoden: Videos" {
+  ${undefined_effort}
+
+  ${allocate_weekly "VT" "4h"}
+}
+
+task "Finanzierung" {
+  ${undefined_effort}
+
+  allocate KeinMatheFreak
+}
+
+task "didaktisches Prinzip" {
+  ${undefined_effort}
+
+  ${allocate_weekly "Kulla" "3h"}
+  ${allocate_weekly "JS" "1h"}
+  ${allocate_weekly "MB" "4h"}
+}
+
+task "Visionsausarbeitung" {
+  ${undefined_effort}
+
+  ${allocate_weekly "Kulla" "3h"}
+  ${allocate_weekly "KeinMatheFreak" "0.5h"}
+}
+
+task "Wissensvoraussetzungen" {
+  ${undefined_effort}
+
+  ${allocate_weekly "MK" "3h"}
+  ${allocate_weekly "Kulla" "1h"}
+}
+
+task "Orga" {
+  ${undefined_effort}
+
+  ${allocate_weekly "Kulla" "2h"}
+  ${allocate_weekly "KeinMatheFreak" "2h"}
+}
+
+task "Akademie / MWP-Akademie"
+task "Community-Support"
+task "Betreuung Münster"
+
+task "Serlo-Aufgaben" {
+  ${undefined_effort}
+
+  ${allocate_weekly "Kulla" "10h"}
+}
+
+task "Masktheorie" {
+  ${undefined_effort}
+  ${allocate_weekly "Kulla" "2h"}
+}
+
+task "Analysis 1: Komplexe Zahlen" {
+  ${undefined_effort}
+
+  ${allocate_weekly "ZornschesLemma" "3h"}
+  ${allocate_weekly "Kulla" "1h"}
+}
+
+task "Lineare Algebra: Deckert" {
+  ${undefined_effort}
+
+  ${allocate_weekly "JS" "2h"}
+  ${allocate_weekly "MK" "1h"}
+  ${allocate_weekly "Kulla" "1h"}
+}
+
+task "Lineare Algebra" {
+  ${undefined_effort}
+
+  ${allocate_weekly "Kulla" "2h"}
+}
+
+task "Übersetzung: Analysis 1" {
+  ${undefined_effort}
+
+  ${allocate_weekly "KeinMatheFreak" "2h"}
+}
+
+task "Interaktivität" {
+  ${undefined_effort}
+
+  ${allocate_weekly "JS" "3h"}
+  ${allocate_weekly "Kulla" "1h"}
+}
+
+task "Bundesweite Veröffentlichung" {
+  duration 3m
+  depends !lmu_print
+
+  ${allocate_weekly "Kulla" "3h"}
+}
+
+# Not planned tasks
+task "Upload bestehender Videos"
