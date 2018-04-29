@@ -45,6 +45,7 @@ macro report_resourcegraph_body [
   columns no, name, effort, rate, daily
   ${loadunit_hours}
   hidetask 0
+  hideresource plan.effort = 0
 ]
 
 macro report_project [
@@ -91,6 +92,7 @@ textreport frame "" {
 
   resourcereport resource_graph "resource_graph" {
     ${report_resourcegraph_body}
+    hideresource 0
   }
 
   textreport projects "Projects" {
