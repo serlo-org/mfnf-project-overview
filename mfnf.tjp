@@ -39,6 +39,14 @@ macro report_complete_body [
   hideresource 0
 ]
 
+macro report_resourcegraph_body [
+  title "Resource Graph"
+  headline "Resource Graph"
+  columns no, name, effort, rate, daily
+  ${loadunit_hours}
+  hidetask 0
+]
+
 macro report_project [
   textreport ${1} "${2}" {
     timeformat "%a %Y-%m-%d"
@@ -53,12 +61,9 @@ macro report_project [
       taskroot ${1}
     }
 
-    resourcereport "lmu_print_resource_graph.html" {
-      title "Resource Graph"
-      columns no, name, effort, rate, daily
-      ${loadunit_hours}
-      hidetask 0
-      taskroot lmu_print
+    resourcereport "${1}_resource_graph" {
+      ${report_resourcegraph_body}
+      taskroot ${1}
     }
 
     purge formats
@@ -85,13 +90,7 @@ textreport frame "" {
   }
 
   resourcereport resource_graph "resource_graph" {
-    title "Resource Graph"
-    headline "Resource Graph"
-    columns no, name, effort, rate, weekly
-    ${loadunit_hours}
-    loadunit hours
-    caption "All effort values are in hours."
-    hidetask 0
+    ${report_resourcegraph_body}
   }
 
   textreport projects "Projects" {
