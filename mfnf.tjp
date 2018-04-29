@@ -30,6 +30,15 @@ macro report_overview_body [
   ${loadunit_hours}
 ]
 
+macro report_complete_body [
+  title "All tasks and resources"
+  headline "All tasks and resources"
+  columns bsi, name, start, end, effort,
+          duration, chart { scale day width 500 }
+  ${loadunit_hours}
+  hideresource 0
+]
+
 macro report_project [
   textreport ${1} "${2}" {
     timeformat "%a %Y-%m-%d"
@@ -39,13 +48,9 @@ macro report_project [
       taskroot ${1}
     }
 
-    taskreport "lmu_print_complete" {
-      title "Tasks and Resources"
-      columns bsi, name, start, end, effort,
-              duration, chart { scale day width 500 }
-      ${loadunit_hours}
-      hideresource 0
-      taskroot lmu_print
+    taskreport "${1}_complete" {
+      ${report_complete_body}
+      taskroot ${1}
     }
 
     resourcereport "lmu_print_resource_graph.html" {
@@ -73,6 +78,10 @@ textreport frame "" {
   taskreport overview "index" {
     ${report_overview_body}
     hidetask treelevel() > 1
+  }
+
+  taskreport complete "complete" {
+    ${report_complete_body}
   }
 
   resourcereport resource_graph "resource_graph" {
