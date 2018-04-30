@@ -1,0 +1,44 @@
+task complex_numbers "Bereich komplexe Zahlen fertigstellen" {
+  task "Redaktionstagen am 19.5" {
+    task invitation "Personen einladen" {
+      effort 2h
+
+      allocate ZornschesLemma
+    }
+
+    task preparation "Redaktionstag vorbereiten" {
+      effort 4h
+      depends !invitation
+
+      allocate ZornschesLemma
+    }
+
+    task event "Redaktionstag durchführen" {
+      period 2018-05-19 + 8h
+
+      depends !preparation
+
+      allocate ZornschesLemma
+      allocate Kulla
+    }
+
+    task "Redaktionstag nachbereiten" {
+      effort 10h
+
+      depends !event
+
+      allocate ZornschesLemma
+      allocate Kulla
+    }
+  }
+
+  task "Treffen zum Aufräumen" {
+    period 2018-05-12 + 7h
+
+    allocate Kulla, ZornschesLemma
+  }
+
+  task "Werbung in Linearer Algebra"
+  task "Werbung in Tutorium machen"
+  task "Redaktionstreffen am 17.6"
+}

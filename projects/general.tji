@@ -94,13 +94,6 @@ task "Masktheorie" {
   ${allocate_weekly "Kulla" "2h"}
 }
 
-task "Analysis 1: Komplexe Zahlen" {
-  ${undefined_effort}
-
-  ${allocate_weekly "ZornschesLemma" "3h"}
-  ${allocate_weekly "Kulla" "1h"}
-}
-
 task "Lineare Algebra: Deckert" {
   ${undefined_effort}
 

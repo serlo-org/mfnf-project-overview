@@ -79,6 +79,7 @@ textreport frame "" {
 
   textreport projects "Projects" {
     ${report_project "lmu_print" "LMU-Auflage"}
+    ${report_project "complex_numbers" "Komplexe Zahlen"}
 
     purge formats
   }
