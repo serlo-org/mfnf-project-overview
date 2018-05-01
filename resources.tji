@@ -1,39 +1,18 @@
-resource Kulla "Kulla" {
-  limits { weeklymax 20h }
-}
+macro person [
+  resource ${1} "${1}" {
+    limits {
+      weeklymax ${2}
+    }
+  }
+]
 
-resource KeinMatheFreak "KeinMatheFreak" {
-  limits { weeklymax 5h }
-}
-
-resource ZornschesLemma "Zornsches Lemma" {
-  limits { weeklymax 3h }
-}
-
-resource MK "MK" {
-  limits { weeklymax 10h }
-}
-
-resource JS "JS" {
-  limits { weeklymax 6h }
-}
-
-resource elbotho "elbotho" {
-  limits { weeklymax 5h }
-}
-
-resource KatharinaKirchner "Katharina Kirchner" {
-  limits { weeklymax 4h }
-}
-
-resource Y "Y" {
-  limits { weeklymax 11h }
-}
-
-resource VT "VT" {
-  limits { weeklymax 4h }
-}
-
-resource MB "MB" {
-  limits { weeklymax 4h }
-}
+${person "Kulla" "25h"}
+${person "KeinMatheFreak" "5h"}
+${person "ZornschesLemma" "3h"}
+${person "MK" "10h"}
+${person "JS" "6h"}
+${person "elbotho" "5h"}
+${person "KatharinaKirchner" "4h"}
+${person "Y" "11h"}
+${person "VT" "4h"}
+${person "MB" "4h"}
