@@ -1,6 +1,6 @@
 .PHONY: all clean
 
-TARGET_DIR := out
+TARGET_DIR := public
 PROJECT_FILE := mfnf.tjp
 
 all: $(TARGET_DIR) $(PROJECT_FILE)
