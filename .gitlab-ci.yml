@@ -1,0 +1,22 @@
+image: ruby:2.3
+
+test:
+  script:
+  - gem install taskjuggler --no-document --clear-sources
+  - export LANG='C.UTF-8'
+  - export LC_ALL='C.UTF-8'
+  - make
+  except:
+    - master
+
+pages:
+  script:
+  - gem install taskjuggler --no-document --clear-sources
+  - export LANG='C.UTF-8'
+  - export LC_ALL='C.UTF-8'
+  - make
+  artifacts:
+    paths:
+    - public
+  only:
+  - master
