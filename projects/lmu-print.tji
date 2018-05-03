@@ -4,6 +4,7 @@ task lmu_print "LMU-Auflage Analysisbuch" {
     effort 2h
     allocate KatharinaKirchner
     allocate elbotho
+    complete 100
   }
 
   task print "Druck des Buchs" {
