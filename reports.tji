@@ -29,6 +29,7 @@ macro report_all_body [
           duration, chart { scale day width 500 }
   ${loadunit_hours}
   hideresource 0
+  hidetask plan.complete = 100
 ]
 
 macro report_resourcegraph_body [
@@ -36,7 +37,7 @@ macro report_resourcegraph_body [
   headline "Resource Graph"
   columns no, name, effort, rate, daily
   ${loadunit_hours}
-  hidetask 0
+  hidetask plan.complete = 100
   hideresource plan.effort = 0
 ]
 
