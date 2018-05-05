@@ -38,7 +38,9 @@ task complex_numbers "Bereich komplexe Zahlen fertigstellen" {
     allocate Kulla, ZornschesLemma
   }
 
-  task "Werbung in Linearer Algebra"
-  task "Werbung in Tutorium machen"
-  task "Redaktionstreffen am 17.6"
+  task "Redaktionstreffen am 17.6" {
+    period 2018-06-17 + 7h
+
+    allocate Kulla, ZornschesLemma
+  }
 }
