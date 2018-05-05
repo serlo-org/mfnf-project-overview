@@ -20,6 +20,7 @@ task lmu_print "LMU-Auflage Analysisbuch" {
 
   task get_contacts "Kontake der Autor*innen einholen" {
     effort 4h
+    complete 100
     allocate Kulla
   }
 
