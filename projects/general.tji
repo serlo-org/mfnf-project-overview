@@ -25,23 +25,23 @@ task "MFNF2Serlo" {
 }
 
 task "Piazza" {
-  ${undefined_effort}
+  start 2018-08-01
 
   ${allocate_weekly "MK" "2h"}
-  ${allocate_weekly "Kulla" "1h"}
+  ${allocate_weekly "Kulla" "0.5h"}
 }
 
 task "Projekt: Chemie" {
   ${undefined_effort}
 
   ${allocate_weekly "Y" "11h"}
-  ${allocate_weekly "Kulla" "2h"}
 }
 
 task "Rechenmethoden: Videos" {
   ${undefined_effort}
 
   ${allocate_weekly "VT" "4h"}
+  ${allocate_weekly "MK" "2h"}
 }
 
 task "Finanzierung" {
@@ -79,17 +79,13 @@ task "Orga" {
   ${allocate_weekly "KeinMatheFreak" "2h"}
 }
 
-task "Akademie / MWP-Akademie"
-task "Community-Support"
-task "Betreuung Münster"
-
 task "Serlo-Aufgaben" {
   ${undefined_effort}
 
-  ${allocate_weekly "Kulla" "10h"}
+  ${allocate_weekly "Kulla" "5h"}
 }
 
-task "Masktheorie" {
+task "Maßtheorie" {
   ${undefined_effort}
   ${allocate_weekly "Kulla" "2h"}
 }
@@ -114,13 +110,6 @@ task "Übersetzung: Analysis 1" {
   ${allocate_weekly "KeinMatheFreak" "2h"}
 }
 
-task "Interaktivität" {
-  ${undefined_effort}
-
-  ${allocate_weekly "JS" "3h"}
-  ${allocate_weekly "Kulla" "1h"}
-}
-
 task "Bundesweite Veröffentlichung" {
   duration 3m
   depends !lmu_print
@@ -128,5 +117,8 @@ task "Bundesweite Veröffentlichung" {
   ${allocate_weekly "Kulla" "3h"}
 }
 
-# Not planned tasks
-task "Upload bestehender Videos"
+${backlog "Upload bestehender Videos"}
+${backlog "Akademie / MWP-Akademie"}
+${backlog "Community-Support"}
+${backlog "Projekt in Münster"}
+${backlog "Interaktivität"}
