@@ -1,0 +1,7 @@
+flags backlog
+
+macro backlog [
+  task "${1}" {
+    flags backlog
+  }
+]

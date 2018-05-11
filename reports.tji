@@ -7,17 +7,25 @@ macro report_overview_body [
   title "Overview"
   headline "Overview"
   hideresource 1
-  hidetask plan.complete = 100
+  hidetask (plan.complete = 100) | backlog
   columns bsi, name, start, end, effort,
           duration, chart { scale day width 500 }
   ${loadunit_hours}
+]
+
+macro report_backlog_body [
+  title "Backlog"
+  headline "Backlog"
+  hideresource 1
+  hidetask ~(backlog)
+  columns bsi, name
 ]
 
 macro report_complete_body [
   title "Complete tasks"
   headline "Complete tasks"
   hideresource 1
-  hidetask plan.complete < 100
+  hidetask (plan.complete < 100) | backlog
   columns bsi, name, effort
   ${loadunit_hours}
 ]
@@ -55,6 +63,11 @@ macro report_project [
       taskroot ${1}
     }
 
+    taskreport "${1}_backlog" {
+      ${report_backlog_body}
+      taskroot ${1}
+    }
+
     resourcereport "${1}_resource_graph" {
       ${report_resourcegraph_body}
       taskroot ${1}
@@ -81,11 +94,16 @@ textreport frame "" {
 
   taskreport overview "index" {
     ${report_overview_body}
-    hidetask treelevel() > 1
+    hidetask (treelevel() > 1) | backlog
   }
 
   taskreport all "all" {
     ${report_all_body}
+  }
+
+  taskreport backlog "backlog" {
+    ${report_backlog_body}
+    hidetask (treelevel() > 1) | ~(backlog)
   }
 
   resourcereport resource_graph "resource_graph" {

@@ -15,6 +15,7 @@ project mfnf "Mathe für Nicht-Freaks" 2018-04-30 +6m {
 
 include "resources.tji"
 
+include "project_macros.tji"
 include "projects/lmu-print.tji"
 include "projects/general.tji"
 include "projects/complex_numbers.tji"
